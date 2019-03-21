@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Horat1us\Yii\Bootstrap;
+namespace Horat1us\Yii\Migration;
 
 use yii\console;
 use yii\base;
 
 /**
- * Trait MigrationTrait
- * @package Horat1us\Yii\Bootstrap
+ * Trait BootstrapTrait
+ * @package Horat1us\Yii\Migration
  */
-trait MigrationTrait
+trait BootstrapTrait
 {
     /**
      * @throws base\InvalidConfigException

@@ -1,6 +1,6 @@
 {
-  "name": "horat1us/yii2-bootstrap-migration",
-  "description": "Yii2 Bootstrap Migration",
+  "name": "horat1us/yii2-migration-bootstrap",
+  "description": "Yii2 Migrations Bootstrap",
   "type": "library",
   "require": {
     "php": ">=7.2",
@@ -33,12 +33,12 @@
   },
   "autoload": {
     "psr-4": {
-      "Horat1us\\Yii\\Bootstrap\\": "src/"
+      "Horat1us\\Yii\\Migration\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Horat1us\\Yii\\Bootstrap\\Tests\\": "tests/"
+      "Horat1us\\Yii\\Migration\\Tests\\": "tests/"
     }
   }
 }

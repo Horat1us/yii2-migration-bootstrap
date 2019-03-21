@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-namespace Horat1us\Yii\Bootstrap\Tests;
+namespace Horat1us\Yii\Migration\Tests;
 
 use PHPUnit\Framework\TestCase;
-use Horat1us\Yii\Bootstrap;
+use Horat1us\Yii\Migration;
 use yii\console;
 use yii\base;
 use yii\db;
 
 /**
- * Class MigrationTraitTest
- * @package Horat1us\Yii\Bootstrap\Tests
+ * Class BootstrapTest
+ * @package Horat1us\Yii\Migration\Tests
  */
-class MigrationTest extends TestCase
+class BootstrapTest extends TestCase
 {
     protected const ID = 'test-migrate';
 
     /** @var console\Application */
     protected $app;
 
-    /** @var Bootstrap\Migration */
+    /** @var Migration\Bootstrap */
     protected $bootstrap;
 
     /**
@@ -31,7 +31,7 @@ class MigrationTest extends TestCase
     {
         parent::setUp();
         $this->app = $this->createMock(console\Application::class);
-        $this->bootstrap = new Bootstrap\Migration([
+        $this->bootstrap = new Migration\Bootstrap([
             'id' => static::ID,
             'reference' => [
                 'class' => __CLASS__,
@@ -97,7 +97,7 @@ class MigrationTest extends TestCase
 
         $this->expectException(base\InvalidConfigException::class);
         $this->expectExceptionMessage(
-            'Incompatible  controller map. Controller test-migrate already configured as yii\console\controllers\MigrateController, Horat1us\Yii\Bootstrap\Tests\MigrationTest expected' // phpcs:ignoreLine
+            'Incompatible  controller map. Controller test-migrate already configured as yii\console\controllers\MigrateController, Horat1us\Yii\Migration\Tests\BootstrapTest expected' // phpcs:ignore
         );
 
         /** @noinspection PhpUnhandledExceptionInspection */

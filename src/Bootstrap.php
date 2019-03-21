@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Horat1us\Yii\Bootstrap;
+namespace Horat1us\Yii\Migration;
 
 use yii\console;
 use yii\base;
 
 /**
- * Class Migration
- * @package Horat1us\Yii\Bootstrap
+ * Class Bootstrap
+ * @package Horat1us\Yii\Migration
  */
-class Migration extends base\BaseObject implements base\BootstrapInterface
+class Bootstrap extends base\BaseObject implements base\BootstrapInterface
 {
-    use MigrationTrait {
+    use BootstrapTrait {
         getId as private defaultId;
         getReference as private defaultReference;
     }

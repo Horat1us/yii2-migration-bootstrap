@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace Horat1us\Yii\Bootstrap\Tests;
+namespace Horat1us\Yii\Migration\Tests;
 
 use PHPUnit\Framework\TestCase;
-use Horat1us\Yii\Bootstrap;
+use Horat1us\Yii\Migration;
 use yii\console;
 
 /**
- * Class MigrationTratiTest
- * @package Horat1us\Yii\Bootstrap\Tests
+ * Class BootstrapTraitTest
+ * @package Horat1us\Yii\Migration\Tests
  */
-class MigrationTraitTest extends TestCase
+class BootstrapTraitTest extends TestCase
 {
     public function testDefaultMethodValues(): void
     {
         $bootstrap = new class
         {
-            use Bootstrap\MigrationTrait {
+            use Migration\BootstrapTrait {
                 append as public;
             }
 
