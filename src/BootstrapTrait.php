@@ -19,6 +19,8 @@ trait BootstrapTrait
     protected function append(
         console\Application $application
     ): void {
+        $application->setAliases($this->getAliases());
+
         $reference = $this->getReference();
         if (!array_key_exists('class', $reference)) {
             throw new base\InvalidConfigException("Invalid reference, missing class name");
@@ -62,6 +64,13 @@ trait BootstrapTrait
      * array keys SHALL NOT be defined for correct migrationNamespaces merge
      */
     abstract protected function getNamespaces(): array;
+
+    /**
+     * @return string[] aliases for migrations autoload
+     * - key - alias name - migrations namespaces (`Horat1us/Yii/Migrations`)
+     * - value - path - path to migrations folder (`@vendor/horat1us/package/migrations`)
+     */
+    abstract protected function getAliases(): array;
 
     /**
      * @return string controller ID to define route `php yii migrate`

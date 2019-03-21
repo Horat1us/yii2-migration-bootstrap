@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Horat1us\Yii\Migration\Tests;
 
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Horat1us\Yii\Migration;
 use yii\console;
@@ -18,7 +19,7 @@ class BootstrapTest extends TestCase
 {
     protected const ID = 'test-migrate';
 
-    /** @var console\Application */
+    /** @var console\Application|MockObject */
     protected $app;
 
     /** @var Migration\Bootstrap */
@@ -131,5 +132,31 @@ class BootstrapTest extends TestCase
             ],
             $this->app->controllerMap['migrate']
         );
+    }
+
+    public function testSingleAlias(): void
+    {
+        $this->bootstrap->aliases = ['@alias-key' => 'alias-value'];
+
+        $this->app
+            ->expects($this->once())
+            ->method('setAliases')
+            ->with([['@alias-key' => 'alias-value']]);
+
+        /** @noinspection PhpUnhandledExceptionInspection */
+        $this->bootstrap->bootstrap($this->app);
+    }
+
+    public function testFewAliases(): void
+    {
+        $this->bootstrap->aliases = [['@alias-key' => 'alias-value'],];
+
+        $this->app
+            ->expects($this->once())
+            ->method('setAliases')
+            ->with([['@alias-key' => 'alias-value']]);
+
+        /** @noinspection PhpUnhandledExceptionInspection */
+        $this->bootstrap->bootstrap($this->app);
     }
 }

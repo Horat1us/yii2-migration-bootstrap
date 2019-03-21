@@ -34,7 +34,13 @@ class Bootstrap extends base\BaseObject implements base\BootstrapInterface
      * @see MigrationTrait::getNamespaces()
      * @var string[]|string
      */
-    public $namespaces;
+    public $namespaces = [];
+
+    /**
+     * @see BootstrapTrait::getAliases()
+     * @var string[]
+     */
+    public $aliases = [];
 
     /**
      * @throws base\InvalidConfigException
@@ -78,5 +84,14 @@ class Bootstrap extends base\BaseObject implements base\BootstrapInterface
         }
 
         return $this->namespaces;
+    }
+
+    protected function getAliases(): array
+    {
+        if (count($this->aliases) === 1 && is_string(array_keys($this->aliases)[0])) {
+            $this->aliases = [$this->aliases];
+        }
+
+        return $this->aliases;
     }
 }

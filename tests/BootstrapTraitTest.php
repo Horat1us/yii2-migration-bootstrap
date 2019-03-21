@@ -26,6 +26,11 @@ class BootstrapTraitTest extends TestCase
             {
                 return [__NAMESPACE__];
             }
+
+            protected function getAliases(): array
+            {
+                return [];
+            }
         };
 
         /** @noinspection PhpUnhandledExceptionInspection */

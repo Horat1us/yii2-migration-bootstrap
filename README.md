@@ -32,6 +32,8 @@ use Horat1us\Yii;
 class Bootstrap extends Yii\Migration\Bootstrap
 {
     public $namespaces = __NAMESPACE__ . "\\Migrations";
+    
+    public $aliases = ['Package' => '@vendor/developer/package/src'];
 }
 ```
 
