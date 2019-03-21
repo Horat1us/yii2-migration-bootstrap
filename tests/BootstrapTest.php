@@ -141,20 +141,7 @@ class BootstrapTest extends TestCase
         $this->app
             ->expects($this->once())
             ->method('setAliases')
-            ->with([['@alias-key' => 'alias-value']]);
-
-        /** @noinspection PhpUnhandledExceptionInspection */
-        $this->bootstrap->bootstrap($this->app);
-    }
-
-    public function testFewAliases(): void
-    {
-        $this->bootstrap->aliases = [['@alias-key' => 'alias-value'],];
-
-        $this->app
-            ->expects($this->once())
-            ->method('setAliases')
-            ->with([['@alias-key' => 'alias-value']]);
+            ->with(['@alias-key' => 'alias-value']);
 
         /** @noinspection PhpUnhandledExceptionInspection */
         $this->bootstrap->bootstrap($this->app);

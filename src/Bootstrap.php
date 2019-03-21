@@ -88,10 +88,6 @@ class Bootstrap extends base\BaseObject implements base\BootstrapInterface
 
     protected function getAliases(): array
     {
-        if (count($this->aliases) === 1 && is_string(array_keys($this->aliases)[0])) {
-            $this->aliases = [$this->aliases];
-        }
-
         return $this->aliases;
     }
 }
