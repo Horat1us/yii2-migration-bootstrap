@@ -16,6 +16,8 @@ class Bootstrap extends base\BaseObject implements base\BootstrapInterface
     use BootstrapTrait {
         getId as private defaultId;
         getReference as private defaultReference;
+        getNamespaces as private defaultNamespaces;
+        getAliases as private defaultAliases;
     }
 
     /**
@@ -40,7 +42,7 @@ class Bootstrap extends base\BaseObject implements base\BootstrapInterface
      * @see BootstrapTrait::getAliases()
      * @var string[]
      */
-    public $aliases = [];
+    public array $aliases = [];
 
     /**
      * @throws base\InvalidConfigException
@@ -74,11 +76,11 @@ class Bootstrap extends base\BaseObject implements base\BootstrapInterface
         return $this->reference;
     }
 
-    /**
-     * @throws base\InvalidConfigException
-     */
     protected function getNamespaces(): array
     {
+        if (empty($this->namespaces)) {
+            return $this->namespaces = $this->defaultNamespaces();
+        }
         if (is_string($this->namespaces)) {
             $this->namespaces = [$this->namespaces];
         }
@@ -88,6 +90,9 @@ class Bootstrap extends base\BaseObject implements base\BootstrapInterface
 
     protected function getAliases(): array
     {
+        if (empty($this->aliases)) {
+            return $this->aliases = $this->defaultAliases();
+        }
         return $this->aliases;
     }
 }

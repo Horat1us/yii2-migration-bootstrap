@@ -18,7 +18,8 @@ trait BootstrapTrait
      */
     protected function append(
         console\Application $application
-    ): void {
+    ): void
+    {
         $application->setAliases($this->getAliases());
 
         $reference = $this->getReference();
@@ -63,14 +64,24 @@ trait BootstrapTrait
      * @return string[] migrations namespaces to append to controller migration namespaces
      * array keys SHALL NOT be defined for correct migrationNamespaces merge
      */
-    abstract protected function getNamespaces(): array;
+    protected function getNamespaces(): array
+    {
+        $reflection = $this->getStaticReflection();
+        return [$reflection->getNamespaceName()];
+    }
 
     /**
      * @return string[] aliases for migrations autoload
      * - key - alias name - migrations namespaces (`Horat1us/Yii/Migrations`)
      * - value - path - path to migrations folder (`@vendor/horat1us/package/migrations`)
      */
-    abstract protected function getAliases(): array;
+    protected function getAliases(): array
+    {
+        $reflection = $this->getStaticReflection();
+        return [
+            '@' . str_replace('\\', '/', $reflection->getNamespaceName()) => dirname($reflection->getFileName()),
+        ];
+    }
 
     /**
      * @return string controller ID to define route `php yii migrate`
@@ -88,5 +99,11 @@ trait BootstrapTrait
         return [
             'class' => console\controllers\MigrateController::class,
         ];
+    }
+
+    private function getStaticReflection(): \ReflectionClass
+    {
+        $reflection = new \ReflectionClass(static::class);
+        return $reflection;
     }
 }
