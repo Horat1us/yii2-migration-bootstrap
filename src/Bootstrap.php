@@ -40,9 +40,9 @@ class Bootstrap extends base\BaseObject implements base\BootstrapInterface
 
     /**
      * @see BootstrapTrait::getAliases()
-     * @var string[]
+     * @var string[]|string
      */
-    public array $aliases = [];
+    public $aliases = [];
 
     /**
      * @throws base\InvalidConfigException
