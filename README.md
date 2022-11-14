@@ -14,9 +14,9 @@ composer require horat1us/yii2-migration-bootstrap:^1.0
 ```
 
 ## Structure
-- [MigrationTrait](./src/MigrationTrait.php) - base implementation, can be used outside `\yii\base\BootstrapInterface`
+- [BootstrapTrait](./src/BootstrapTrait.php) - base implementation, can be used outside `\yii\base\BootstrapInterface`
 implementation.
-- [Migration](./src/Migration.php) - `yii\base\BootstrapInterface` implementation using *MigrationTrait*
+- [Bootstrap](./src/Bootstrap.php) - `yii\base\BootstrapInterface` implementation using *BootstrapTrait*
 
 
 ## Example
