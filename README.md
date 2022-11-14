@@ -1,4 +1,5 @@
 # Yii2 Migrations Bootstrap
+[![Test & Lint](https://github.com/Horat1us/yii2-migration-bootstrap/actions/workflows/php.yml/badge.svg?branch=master)](https://github.com/Horat1us/yii2-migration-bootstrap/actions/workflows/php.yml)
 [![codecov](https://codecov.io/gh/Horat1us/yii2-migration-bootstrap/branch/master/graph/badge.svg)](https://codecov.io/gh/Horat1us/yii2-migration-bootstrap)
 
 This package provides `\yii\base\BootstrapInterface` implementation to append packages migrations to console application.  
