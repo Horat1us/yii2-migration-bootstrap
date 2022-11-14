@@ -18,8 +18,7 @@ trait BootstrapTrait
      */
     protected function append(
         console\Application $application
-    ): void
-    {
+    ): void {
         $application->setAliases($this->getAliases());
 
         $reference = $this->getReference();
