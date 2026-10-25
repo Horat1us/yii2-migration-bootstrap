@@ -33,11 +33,7 @@ class BootstrapTraitTest extends TestCase
             }
         };
 
-        /** @noinspection PhpUnhandledExceptionInspection */
-        /** @var console\Application $app */
-        $app = $this->getMockBuilder(console\Application::class)
-            ->disableOriginalConstructor()
-            ->getMockForAbstractClass();
+        $app = $this->createStub(console\Application::class);
 
         $bootstrap->append($app);
 

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Horat1us\Yii\Migration\Tests;
 
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Horat1us\Yii\Migration;
 use yii\console;
@@ -19,7 +19,7 @@ class BootstrapTest extends TestCase
 {
     protected const ID = 'test-migrate';
 
-    /** @var console\Application|MockObject */
+    /** @var console\Application&Stub */
     protected $app;
 
     /** @var Migration\Bootstrap */
@@ -31,7 +31,7 @@ class BootstrapTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->app = $this->createMock(console\Application::class);
+        $this->app = $this->createStub(console\Application::class);
         $this->bootstrap = new Migration\Bootstrap([
             'id' => static::ID,
             'reference' => [
@@ -107,10 +107,7 @@ class BootstrapTest extends TestCase
 
     public function testBootstrapNotConsoleApplication(): void
     {
-        /** @noinspection PhpUnhandledExceptionInspection */
-        $app = $this->getMockBuilder(base\Application::class)
-            ->disableOriginalConstructor()
-            ->getMockForAbstractClass();
+        $app = $this->createStub(base\Application::class);
 
         /** @noinspection PhpUnhandledExceptionInspection */
         $this->assertFalse($this->bootstrap->bootstrap($app));
@@ -138,12 +135,13 @@ class BootstrapTest extends TestCase
     {
         $this->bootstrap->aliases = ['@alias-key' => 'alias-value'];
 
-        $this->app
+        $app = $this->createMock(console\Application::class);
+        $app
             ->expects($this->once())
             ->method('setAliases')
             ->with(['@alias-key' => 'alias-value']);
 
         /** @noinspection PhpUnhandledExceptionInspection */
-        $this->bootstrap->bootstrap($this->app);
+        $this->bootstrap->bootstrap($app);
     }
 }
