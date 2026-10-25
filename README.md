@@ -8,6 +8,8 @@ Main purpose is to prevent mistakes while re-configuring console application.
 Previous implementation was available in [horat1us/yii2-base](https://github.com/Horat1us/yii2-base) package
 as [BootstrapMigrations](https://github.com/Horat1us/yii2-base/blob/1.16.0/src/Traits/BootstrapMigrations.php) trait. 
 
+Compatibility: tested on PHP 8.4, PHP 8.5
+
 ## Installation
 Using [packagist.org](https://packagist.org/packages/horat1us/yii2-migration-bootstrap):
 ```bash
